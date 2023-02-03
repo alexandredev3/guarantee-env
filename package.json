@@ -1,0 +1,23 @@
+{
+  "name": "auto-env",
+  "version": "1.0.0",
+  "description": "Create .env file automatically",
+  "main": "dist/index.js",
+  "keywords": [],
+  "author": "Alexandre Costa <contado.alexandre.costa@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexandredev3/auto-env"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx --watch src/index.ts"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "prettier": "^2.8.3",
+    "tsx": "^3.12.2",
+    "typescript": "^4.9.5"
+  }
+}
