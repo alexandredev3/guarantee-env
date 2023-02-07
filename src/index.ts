@@ -1,5 +1,3 @@
-async function main() {
-  console.log("->", process.argv);
-}
+import { program } from './cli';
 
-main();
+program.parse(process.argv);
