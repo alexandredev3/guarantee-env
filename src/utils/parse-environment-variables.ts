@@ -1,16 +1,24 @@
-import type { EnvFile } from "typings";
+import type { EnvFile } from 'typings';
 
-export const parseEnvironmentVariables = (environmentString: string): EnvFile => {
-  const environmentVariables = environmentString.split(" ");
+const RESERVED_BREAKLINE_REGEX = /\r\n|\n/;
 
-  const environmentVariablesParsed = environmentVariables.map((environmentVariable) => {
-    const [name, value] = environmentVariable.split('=');
+export const parseEnvironmentVariables = (
+  environmentString: string
+): EnvFile => {
+  const environmentVariablesParsed = environmentString
+    .split(RESERVED_BREAKLINE_REGEX)
+    .filter(
+      (environmentVariable) =>
+        !environmentVariable.includes('#') && environmentVariable !== ''
+    )
+    .map((environmentVariable) => {
+      const [name, value] = environmentVariable.split('=');
 
-    return {
-      variable: name,
-      value: value || null
-    }
-  });
+      return {
+        variable: name.trim(),
+        value: value.trim() || null,
+      };
+    });
 
   return environmentVariablesParsed;
-}
+};

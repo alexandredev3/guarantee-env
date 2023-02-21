@@ -15,7 +15,7 @@ export async function action(options: OptionValues) {
 
     let envFile = await loadEnv(output);
 
-    if (!envFile.config && !envExampleFile.config) {
+    if (!envFile && !envExampleFile) {
       console.warn(
         LogBeautify.warning(
           `Could not find .env or .env.example files in ${output} and ${input}`
@@ -24,7 +24,7 @@ export async function action(options: OptionValues) {
       process.exit(0);
     }
 
-    if (!envFile.config) {
+    if (!envFile) {
       await createEnvFile(output, input);
 
       const createdEnvFile = await loadEnv(output);
@@ -37,10 +37,10 @@ export async function action(options: OptionValues) {
     if (configFile?.config) {
       missingEnvironmentVariables = findMissingEnvironmentVariables(
         configFile.config,
-        envFile.config!
+        envFile!
       );
     } else {
-      missingEnvironmentVariables = envFile.config!.filter(
+      missingEnvironmentVariables = envFile!.filter(
         (environmentVariable) => !environmentVariable.value
       );
     }
