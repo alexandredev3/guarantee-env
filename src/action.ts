@@ -50,13 +50,16 @@ export async function action(options: OptionValues) {
 
     if (hasMissingEnvironmentVariables) {
       console.error(
-        LogBeautify.error('Required environment variables are missing!')
+        LogBeautify.error('Required environment variables are missing')
       );
       console.table(missingEnvironmentVariables);
 
       process.exit(1);
     }
 
+    console.log(
+      LogBeautify.success('Required environment variables are set')
+    );
     process.exit(0);
   } catch (error: any) {
     console.error(LogBeautify.error(error));

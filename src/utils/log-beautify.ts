@@ -2,6 +2,7 @@ import chalk from 'chalk';
 
 export class LogBeautify {
   private static readonly code = {
+    success: '[SUCCESS]',
     error: '[ERROR]',
     info: '[INFO]',
     warning: '[WARNING]'
@@ -9,6 +10,10 @@ export class LogBeautify {
 
   private static format(code: string, message: string) {
     return code + ' ' + message;
+  }
+
+  public static success<T extends any = unknown>(message: T) {
+    return LogBeautify.format(chalk.bold.bgGreen(this.code.success), chalk.green(message));
   }
 
   public static error<T extends any = unknown>(message: T) {
