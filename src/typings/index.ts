@@ -1,5 +1,4 @@
-export { ConfigVariable, Config } from './config';
-export { LoadResult } from './cosmiconfig-result';
-export { EnvFile } from './env-file';
-export { LoadEnvResult, LoadAutoEnvConfigResult } from './load-result';
-export { OptionValues } from './option-values';
+export type { ConfigVariable, Config } from './config';
+export type { LoadResult } from './cosmiconfig-result';
+export type { EnvFile } from './env-file';
+export type { OptionValues } from './option-values';

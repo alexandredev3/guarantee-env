@@ -1,10 +1,15 @@
 import fs from 'fs-extra';
 import { cosmiconfig } from 'cosmiconfig';
 
-import { config } from 'constants/config';
-import { parseEnvironmentVariables } from 'utils/parse-environment-variables';
+import { config } from './constants';
+import { parseEnvironmentVariables } from './utils/parse-environment-variables';
 
-import { LoadAutoEnvConfigResult } from './typings';
+import { Config } from 'typings';
+
+type LoadConfigResult = {
+  config: Config;
+  filepath: string;
+}
 
 const explorer = cosmiconfig(config.name, {
   searchPlaces: [config.configFile],
@@ -13,9 +18,9 @@ const explorer = cosmiconfig(config.name, {
 
 export const loadConfig = (
   configPath?: string
-): Promise<LoadAutoEnvConfigResult> => {
+): Promise<LoadConfigResult> => {
   try {
-    return explorer.search(configPath) as Promise<LoadAutoEnvConfigResult>;
+    return explorer.search(configPath) as Promise<LoadConfigResult>;
   } catch (error) {
     throw error;
   }

@@ -2,29 +2,38 @@
   "name": "guarantee-env",
   "version": "1.0.0",
   "description": "Ensure environment variables are set before running your app",
-  "main": "dist/index.js",
+  "main": "dist/index.mjs",
+  "module": "dist/index.mjs",
   "keywords": [],
   "author": "Alexandre Costa <contado.alexandre.costa@gmail.com>",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/alexandredev3/auto-env"
   },
   "scripts": {
     "clean": "rimraf dist",
-    "build": "tsc",
+    "build": "pnpm clean && unbuild",
     "dev": "tsx --watch src/index.ts guarantee-env",
     "test:watch": "vitest dev --reporter verbose --allowOnly"
   },
-  "bin": "./bin/index.js",
+  "bin": "bin/index.js",
   "license": "MIT",
   "devDependencies": {
     "@types/fs-extra": "^11.0.1",
     "@types/node": "^18.11.18",
     "@types/pluralize": "^0.0.29",
+    "execa": "^7.0.0",
     "prettier": "^2.8.3",
     "rimraf": "^4.1.2",
     "tsx": "^3.12.2",
     "typescript": "^4.9.5",
+    "unbuild": "^1.1.2",
     "vitest": "^0.28.4"
   },
   "engines": {

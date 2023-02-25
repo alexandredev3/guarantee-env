@@ -1,6 +1,6 @@
 import type { OptionValues, ConfigVariable } from 'typings';
 
-import { LogBeautify } from 'utils/log-beautify';
+import { LogBeautify } from './utils/log-beautify';
 
 import { loadEnv, loadConfig, loadEnvExample } from './load';
 import { findMissingEnvironmentVariables } from './find-missing-env-variables';

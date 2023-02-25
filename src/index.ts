@@ -11,10 +11,13 @@ program
   .argument(config.argument)
   .name(config.name)
   .description(config.description)
-  .version(config.version!)
+  .version(config.version!);
+
+program
   .option(input.flag, input.description, input.defaultValue)
   .option(output.flag, output.description, output.defaultValue)
-  .option(configPath.flag, configPath.description, configPath.defaultValue)
-  .action(async (_, options: OptionValues) => action(options));
+  .option(configPath.flag, configPath.description, configPath.defaultValue);
+
+program.action(async (_, options: OptionValues) => action(options));
 
 program.parse();

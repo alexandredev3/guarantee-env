@@ -1,4 +1,4 @@
-import type { EnvFile } from 'typings';
+import type { EnvFile } from '../typings';
 
 const RESERVED_BREAKLINE_REGEX = /\r\n|\n/;
 

@@ -5,3 +5,4 @@ dist
 
 tests/fixtures/**
 !tests/fixtures/.gitkeep
+!tests/fixtures/.env.example

@@ -1,1 +1,1 @@
-require('../dist/index');
+import('../dist/index.mjs');
