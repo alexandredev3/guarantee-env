@@ -1,14 +1,15 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@abraham/reflection': ^0.12.0
   '@types/fs-extra': ^11.0.1
   '@types/node': ^18.11.18
-  '@types/pluralize': ^0.0.29
   chalk: ^5.2.0
   commander: ^10.0.0
   cosmiconfig: ^8.0.0
   execa: ^7.0.0
   fs-extra: ^11.1.0
+  inversify: ^6.0.1
   prettier: ^2.8.3
   rimraf: ^4.1.2
   tsx: ^3.12.2
@@ -17,15 +18,16 @@ specifiers:
   vitest: ^0.28.4
 
 dependencies:
+  '@abraham/reflection': 0.12.0
   chalk: 5.2.0
   commander: 10.0.0
   cosmiconfig: 8.0.0
   fs-extra: 11.1.0
+  inversify: 6.0.1
 
 devDependencies:
   '@types/fs-extra': 11.0.1
   '@types/node': 18.11.18
-  '@types/pluralize': 0.0.29
   execa: 7.0.0
   prettier: 2.8.3
   rimraf: 4.1.2
@@ -35,6 +37,10 @@ devDependencies:
   vitest: 0.28.4
 
 packages:
+
+  /@abraham/reflection/0.12.0:
+    resolution: {integrity: sha512-OoLlgBE5u18mc61pJNamEh2OtFpHjtvDi1pV4ojnnH77juCvQw/Z3YlHF8TJiorU7/V6UuGApFzsi+bieug7fg==}
+    dev: false
 
   /@ampproject/remapping/2.2.0:
     resolution: {integrity: sha512-qRmjj8nj9qmLTQXXmaR1cck3UXSRMPrbsLJAasZpF+t3riI71BXed5ebIOYwQntykeZuhjsdweEc9BxH5Jc26w==}
@@ -857,10 +863,6 @@ packages:
     resolution: {integrity: sha512-DHQpWGjyQKSHj3ebjFI/wRKcqQcdR+MoFBygntYOZytCqNfkd2ZC4ARDJ2DQqhjH5p85Nnd3jhUJIXrszFX/JA==}
     dev: true
 
-  /@types/pluralize/0.0.29:
-    resolution: {integrity: sha512-BYOID+l2Aco2nBik+iYS4SZX0Lf20KPILP5RGmM1IgzdwNdTs0eebiFriOPcej1sX9mLnSoiNte5zcFxssgpGA==}
-    dev: true
-
   /@types/resolve/1.20.2:
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
     dev: true
@@ -1576,6 +1578,10 @@ packages:
   /inherits/2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
     dev: true
+
+  /inversify/6.0.1:
+    resolution: {integrity: sha512-B3ex30927698TJENHR++8FfEaJGqoWOgI6ZY5Ht/nLUsFCwHn6akbwtnUAPCgUepAnTpe2qHxhDNjoKLyz6rgQ==}
+    dev: false
 
   /is-arrayish/0.2.1:
     resolution: {integrity: sha512-zz06S8t0ozoDXMG+ube26zeCTNXcKIPJZJi8hBrF4idCLms4CG9QtK7qBl1boi5ODzFpjswb5JPmHCbMpjaYzg==}

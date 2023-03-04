@@ -1,4 +1,4 @@
-import type { EnvFile, Config, ConfigVariable } from './typings';
+import type { EnvFile, Config, ConfigVariable } from '../typings';
 
 export const findMissingEnvironmentVariables = (
   configFile: Config,

@@ -5,12 +5,17 @@
     "rootDir": "./src",
     "outDir": "./dist",
     "baseUrl": "./src",
+    "types": [
+      "reflect-metadata"
+    ],
     "allowJs": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "isolatedModules": false,
     "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "moduleResolution": "node",
     "skipLibCheck": true,
   },

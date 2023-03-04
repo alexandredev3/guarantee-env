@@ -3,6 +3,6 @@ dist
 
 .env
 
-tests/fixtures/**
-!tests/fixtures/.gitkeep
+tests/fixtures/output/**
+!tests/fixtures/output/.gitkeep
 !tests/fixtures/.env.example

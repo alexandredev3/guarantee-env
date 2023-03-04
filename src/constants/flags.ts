@@ -21,13 +21,13 @@ export const flags = {
   input: createFlag({
     name: 'input',
     type: 'string',
-    description: '.env file input path',
+    description: '.env.example file input path',
     defaultValue: join(cwd, '.env.example'),
   }),
   output: createFlag({
     name: 'output',
     type: 'string',
-    description: '.env.example file output path',
+    description: '.env file output path',
     defaultValue: join(cwd, '.env'),
   }),
   configPath: createFlag({

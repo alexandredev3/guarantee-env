@@ -1,59 +1,54 @@
-import fs from 'fs-extra';
-import { cosmiconfig } from 'cosmiconfig';
+import { injectable, inject } from 'inversify';
+import type { cosmiconfig } from 'cosmiconfig';
 
-import { config } from './constants';
+import { CONTAINER_TYPES } from './constants';
 import { parseEnvironmentVariables } from './utils/parse-environment-variables';
 
-import { Config } from 'typings';
+import type { IFs } from './fs';
+import type { IExplorer } from './explorer';
+
+import { Config, EnvFile } from 'typings';
 
 type LoadConfigResult = {
   config: Config;
   filepath: string;
+};
+
+export interface ILoad {
+  loadEnv(envPath: string): Promise<EnvFile | null>;
+  loadConfig(configPath?: string): Promise<LoadConfigResult>;
 }
 
-const explorer = cosmiconfig(config.name, {
-  searchPlaces: [config.configFile],
-  packageProp: config.packageProp
-});
-
-export const loadConfig = (
-  configPath?: string
-): Promise<LoadConfigResult> => {
-  try {
-    return explorer.search(configPath) as Promise<LoadConfigResult>;
-  } catch (error) {
-    throw error;
+@injectable()
+export class Load implements ILoad {
+  constructor(
+    @inject(CONTAINER_TYPES.EXPLORER)
+    private _explorer: IExplorer,
+    @inject(CONTAINER_TYPES.FS) private _fs: IFs
+  ) {
+    this._explorer = _explorer;
+    this._fs = _fs;
   }
-};
 
-export const loadEnv = async (path: string) => {
-  try {
-    const file = await fs.readFile(path, {
-      encoding: 'utf-8'
-    });
-
-    return parseEnvironmentVariables(file);
-  } catch (error: any) {
-    if (error.code === 'ENOENT' || error.code === 'EISDIR') {
-      return null;
+  public async loadConfig(configPath?: string): Promise<LoadConfigResult> {
+    try {
+      return this._explorer.search(configPath) as Promise<LoadConfigResult>;
+    } catch (error) {
+      throw error;
     }
-
-    throw error;
   }
-};
 
-export const loadEnvExample = async (path: string = '.env.example') => {
-  try {
-    const file = await fs.readFile(path, {
-      encoding: 'utf-8'
-    });
+  public async loadEnv(envPath: string): Promise<EnvFile | null> {
+    try {
+      const file = await this._fs.readFile(envPath);
 
-    return parseEnvironmentVariables(file);
-  } catch (error: any) {
-    if (error.code === 'ENOENT' || error.code === 'EISDIR') {
-      return null;
+      if (!file) {
+        return null;
+      }
+      
+      return parseEnvironmentVariables(file);
+    } catch (error: any) {
+      throw error;
     }
-
-    throw error;
   }
-};
+}
